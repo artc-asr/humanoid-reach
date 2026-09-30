@@ -413,8 +413,9 @@ function drawSchematic(m, name){
   const baseD = m.R.baseDepth*1000;
   const palX0 = baseD + m.gap, palX1 = palX0 + m.depth;
   const stackTop = m.deck + (m.levels>0 ? (m.isBottle ? (m.levels-1)*m.pitch + m.c.h : m.levels*m.c.h) : 0);
-  const worldH = Math.max(m.Htop + 450, stackTop + 200, 2100);
-  const worldW = palX1 + 900;
+  const arcTop = m.Htop + m.rmax*1000*Math.sin(75*Math.PI/180) + 120;   // reach arc + its label
+  const worldH = Math.max(m.Htop + 450, arcTop, stackTop + 200, 2100);
+  const worldW = palX1 + 1250;                                          // room for right-hand labels
   const W = ox + worldW*s, H = worldH*s + 40;
   const fy = H - 30;
   const X = mm => ox + mm*s, Y = mm => fy - mm*s;
